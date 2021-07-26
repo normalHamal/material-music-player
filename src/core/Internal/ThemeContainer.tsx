@@ -1,58 +1,44 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { createTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { useMediaQuery, PaletteType } from '@material-ui/core';
-import { pink } from '@material-ui/core/colors';
+import {
+  useMediaQuery,
+  PaletteType,
+  createTheme,
+  ThemeProvider,
+} from '@material-ui/core';
 import { PaletteOptions } from '@material-ui/core/styles/createPalette';
+import { DefaultTheme } from '../constants';
 
 export default (props: ThemeProviderProps) => {
-  const { children, themeOptions = {} } = props;
+  const { children, themeOptions = {}, themeType = 'auto' } = props;
   // 检测当前用户的操作系统是否为深色主题
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  const [themeType, setThemeType] = useState<PaletteType>(
+  const [type, setThemeType] = useState<PaletteType>(
     prefersDarkMode ? 'dark' : 'light',
   );
 
   const theme = useMemo(() => {
     const mergeThemeOptions = {
-      light: {
-        primary: {
-          light: '#51b7ae',
-          main: '#26a69a',
-          dark: '#1a746b',
-          contrastText: '#FFF',
-        },
-        secondary: pink,
-      },
-      dark: {
-        primary: {
-          light: '#414141',
-          main: '#757575',
-          dark: '#0c0c0c',
-          contrastText: '#FFF',
-        },
-        secondary: {
-          light: '#dd33fa',
-          main: '#d500f9',
-          dark: '#9500ae',
-          contrastText: '#212121',
-        },
-      },
+      ...DefaultTheme,
       ...themeOptions,
     };
 
     return createTheme({
       palette: {
-        type: themeType,
-        ...mergeThemeOptions[themeType],
+        type,
+        ...mergeThemeOptions[type],
       },
     });
-  }, [themeType]);
+  }, [themeOptions, type]);
 
   useEffect(() => {
-    setThemeType(prefersDarkMode ? 'dark' : 'light');
-  }, [prefersDarkMode]);
+    if (themeType === 'auto') {
+      setThemeType(prefersDarkMode ? 'dark' : 'light');
+    } else {
+      setThemeType(themeType);
+    }
+  }, [prefersDarkMode, themeType]);
 
-  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
 export interface ThemeOptions {
@@ -60,7 +46,10 @@ export interface ThemeOptions {
   dark?: PaletteOptions;
 }
 
+export type ThemeType = 'auto' | 'light' | 'dark';
+
 interface ThemeProviderProps {
   children?: React.ReactNode;
   themeOptions?: ThemeOptions;
+  themeType?: ThemeType;
 }

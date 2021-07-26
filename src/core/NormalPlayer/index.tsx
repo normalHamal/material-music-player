@@ -22,7 +22,7 @@ import {
   ThemeContainer,
 } from '@/core/Internal';
 import { ISong } from '../common';
-import { ThemeOptions } from '../Internal/ThemeContainer';
+import { ThemeOptions, ThemeType } from '../Internal/ThemeContainer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -79,7 +79,7 @@ const Transition = React.forwardRef(function Transition(
 const NormalPlayer = (props: NormalProps) => {
   const classes = useStyles();
   const musicListIns = useMusicList();
-  const { className, list, onShare, themeOptions } = props;
+  const { className, list, onShare, themeOptions, themeType } = props;
   const { current, replacePlayList } = musicListIns;
   const {
     state: detailVisible,
@@ -118,7 +118,7 @@ const NormalPlayer = (props: NormalProps) => {
   }, [list]);
 
   return (
-    <ThemeContainer themeOptions={themeOptions}>
+    <ThemeContainer themeOptions={themeOptions} themeType={themeType}>
       <Card className={clsx(classes.root, className)}>
         <CardActionArea
           onClick={showDetail}
@@ -204,6 +204,7 @@ interface NormalProps {
   list: ISong[];
   onShare?(song: ISong): void;
   themeOptions?: ThemeOptions;
+  themeType?: ThemeType;
 }
 
 export default NormalPlayer;

@@ -14,7 +14,7 @@ export interface ISong {
   duration: number;
   picurl: string;
   artistsname?: string;
-  lyrics?: string | (() => string);
+  lyrics?: string | (() => string) | (() => Promise<string>);
 }
 
 export interface IMusic extends ISong {
