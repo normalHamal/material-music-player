@@ -1,27 +1,23 @@
-# material-music-player
+# 🏠 material-music-player
 
-## Getting Started
+![npm](https://img.shields.io/npm/v/material-music-player.svg) ![npm](https://img.shields.io/npm/dm/material-music-player.svg)
 
-Install dependencies,
+> A beautiful music player with Material Design.
 
-```bash
-$ npm i
-```
+## Demo
 
-Start the dev server,
+[demo](https://normalhamal.github.io/material-music-player/)
 
-```bash
-$ npm start
-```
+![](./assets/demo1.png)
 
-Build documentation,
+![](./assets/demo2.png)
 
-```bash
-$ npm run docs:build
-```
+![](./assets/demo3.png)
 
-Build library via `father-build`,
+## 👩🏻‍💻Install
 
 ```bash
-$ npm run build
+$ npm install material-music-player
+# or
+$ yarn install material-music-player
 ```

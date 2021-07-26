@@ -4,7 +4,7 @@ hero:
   desc: react音乐播放器组件
   actions:
     - text: Getting Started
-      link: /Componnets
+      link: /minimal-player
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: 支持pc & mobile
@@ -15,5 +15,5 @@ features:
   - icon: https://material-ui.com/static/logo_raw.svg
     title: 基于MATERIAL-UI
     desc: Material Design风格的React 组件库。
-footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
+footer: Open-source MIT Licensed | Copyright © 2021<br />Powered by [dumi](https://d.umijs.org)
 ---
