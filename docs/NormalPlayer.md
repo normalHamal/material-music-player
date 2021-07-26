@@ -1,8 +1,8 @@
 ---
 mobile: false
 nav:
-  title: 组件
-  path: /
+  title: NormalPlayer
+  path: /normal-player
 ---
 
 ## NormalPlayer
@@ -46,14 +46,14 @@ const list = [
   },
 ];
 
-const getLyrics = (url?: string): Promise<string | undefined> => {
-  if (!url) return Promise.resolve();
+const getLyrics = (url?: string): Promise<string> => {
+  if (!url) return Promise.resolve('');
 
   return fetch(url)
     .then((res) => res.json())
     .then((res) => {
       const { lyric, code } = res;
-      if (code != 200) Promise.reject(new Error('请求歌词数据失败'));
+      if (code != 200) return Promise.reject(new Error('请求歌词数据失败'));
 
       return lyric;
     });
