@@ -206,6 +206,7 @@ export default () => (
         lyrics: () => getLyrics(item.lyrics),
       }))}
       onShare={() => alert('点击分享')}
+      themeType="light"
       themeOptions={{
         light: {
           primary: {
