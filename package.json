@@ -34,6 +34,7 @@
     "deploy": "npm run docs:deploy:gitpages && npm run docs:deploy:vercel",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
+    "prepublishOnly": "npm run build",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
   },
