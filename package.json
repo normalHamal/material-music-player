@@ -4,7 +4,23 @@
   "version": "1.0.1",
   "sideEffects": false,
   "repository": {
-    "url": "https://github.com/normalHamal/material-music-player"
+    "type": "git",
+    "url": "https://github.com/normalHamal/material-music-player.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/normalHamal/material-music-player/issues"
+  },
+  "homepage": "https://normalhamal.github.io/material-music-player/",
+  "peerDependencies": {
+    "@types/react": "^16.12.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "scripts": {
     "start": "dumi dev",
@@ -12,18 +28,22 @@
     "docs:build:vercel": "cross-env isVercel=true dumi build",
     "docs:deploy:gitpages": "npm run docs:build:gitpages && gh-pages -d docs-dist",
     "docs:deploy:vercel": "npm run docs:build:vercel && git commit -am \"deploy: vercel\"",
-    "build": "father-build",
+    "build:cjs": "cross-env BUILD_MODE=cjs father-build",
+    "build:esm": "cross-env BUILD_MODE=esm father-build",
+    "build": "npm run build:cjs && npm run build:esm",
     "deploy": "npm run docs:deploy:gitpages && npm run docs:deploy:vercel",
     "release": "npm run build && npm publish",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "typings": "lib/index.d.ts",
   "files": [
-    "dist"
+    "es",
+    "lib",
+    "README.md"
   ],
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -37,11 +57,11 @@
     ]
   },
   "dependencies": {
+    "@babel/runtime": "^7.15.3",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
     "clsx": "^1.1.1",
     "howler": "^2.2.3",
-    "react": "^16.12.0",
     "react-window": "^1.8.6"
   },
   "devDependencies": {
