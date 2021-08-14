@@ -9,9 +9,8 @@ import {
   Theme,
   Typography,
   useMediaQuery,
-  useTheme,
 } from '@material-ui/core';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, useTheme } from '@material-ui/core/styles';
 
 import ExpandLess from '@material-ui/icons/ExpandMore';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';

@@ -1,10 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import {
-  useMediaQuery,
-  PaletteType,
-  createTheme,
-  ThemeProvider,
-} from '@material-ui/core';
+import { useMediaQuery, PaletteType } from '@material-ui/core';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import { PaletteOptions } from '@material-ui/core/styles/createPalette';
 import { DefaultTheme } from '../constants';
 

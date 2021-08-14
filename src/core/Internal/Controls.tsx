@@ -1,11 +1,12 @@
 import React, { useCallback } from 'react';
 import clsx from 'clsx';
+import { IconButton as MuiIconButton, Theme } from '@material-ui/core';
 import {
-  IconButton as MuiIconButton,
-  Theme,
+  makeStyles,
+  createStyles,
+  withStyles,
   useTheme,
-} from '@material-ui/core';
-import { makeStyles, createStyles, withStyles } from '@material-ui/core/styles';
+} from '@material-ui/core/styles';
 
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
