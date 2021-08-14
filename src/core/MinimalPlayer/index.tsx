@@ -21,6 +21,7 @@ import { useBoolean, useMusicList } from '@/hooks';
 import { MusicDetail, PlayList, ThemeContainer } from '@/core/Internal';
 import { ISong } from '../common';
 import { ThemeOptions, ThemeType } from '../Internal/ThemeContainer';
+import { BackgroundStyle } from '@/hooks/useBackgroundStyle';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -61,7 +62,8 @@ const Transition = React.forwardRef(function Transition(
 const MinimalPlayer = (props: MinimalProps) => {
   const classes = useStyles();
   const musicListIns = useMusicList();
-  const { className, list, onShare, themeOptions, themeType } = props;
+  const { className, list, onShare, themeOptions, themeType, backgroundStyle } =
+    props;
   const { current, replacePlayList } = musicListIns;
   const {
     state: detailVisible,
@@ -137,6 +139,7 @@ const MinimalPlayer = (props: MinimalProps) => {
             isShowCloseBtn={true}
             isShowListBtn={true}
             isShowPlayModeBtn={true}
+            backgroundStyle={backgroundStyle}
             source={current}
             onShare={onShare}
             playMode={musicListIns.playMode}
@@ -164,6 +167,7 @@ interface MinimalProps {
   onShare?(song: ISong): void;
   themeOptions?: ThemeOptions;
   themeType?: ThemeType;
+  backgroundStyle?: BackgroundStyle;
 }
 
 export default MinimalPlayer;

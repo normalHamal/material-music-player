@@ -4,3 +4,4 @@ export { default as useCurrentLyric } from './useCurrentLyric';
 export { default as useCurrentTime } from './useCurrentTime';
 export { default as useUpdateEffect } from './useUpdateEffect';
 export { default as useMusicList } from './useMusicList';
+export { default as useBackgroundStyle } from './useBackgroundStyle';

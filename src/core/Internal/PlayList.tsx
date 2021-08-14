@@ -13,6 +13,7 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
+  withStyles,
 } from '@material-ui/core';
 
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -36,6 +37,14 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
+const DrawerWithBorderRadius = withStyles((theme: Theme) => ({
+  paper: {
+    [theme.breakpoints.down('xs')]: {
+      borderRadius: theme.spacing(3, 3, 0, 0),
+    },
+  },
+}))(Drawer);
 
 const PlayList = (props: IPlayListProps) => {
   const classes = useStyles();
@@ -101,7 +110,7 @@ const PlayList = (props: IPlayListProps) => {
   );
 
   return (
-    <Drawer
+    <DrawerWithBorderRadius
       anchor={isMini ? 'bottom' : 'right'}
       open={visible}
       onClose={onClose}
@@ -120,7 +129,7 @@ const PlayList = (props: IPlayListProps) => {
           {renderRow}
         </FixedSizeList>
       </List>
-    </Drawer>
+    </DrawerWithBorderRadius>
   );
 };
 

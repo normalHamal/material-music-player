@@ -73,13 +73,38 @@ export default () => (
       height: '768px',
     }}
   >
-    <NormalPlayer
-      list={list.map((item) => ({
-        ...item,
-        lyrics: () => getLyrics(item.lyrics),
-      }))}
-      onShare={() => alert('点击分享')}
-    />
+    <div>
+      <h4>默认播放背景（点击封面图）</h4>
+      <NormalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+      />
+    </div>
+    <div>
+      <h4>背景模糊（点击封面图）</h4>
+      <NormalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="filter"
+      />
+    </div>
+    <div>
+      <h4>背景渐变（点击封面图）</h4>
+      <NormalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="linearGradient"
+      />
+    </div>
   </div>
 );
 ```
@@ -150,14 +175,41 @@ export default () => (
       height: '768px',
     }}
   >
-    <NormalPlayer
-      list={list.map((item) => ({
-        ...item,
-        lyrics: () => getLyrics(item.lyrics),
-      }))}
-      onShare={() => alert('点击分享')}
-      themeType="dark"
-    />
+    <div>
+      <h4>默认播放背景（点击封面图）</h4>
+      <NormalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        themeType="dark"
+      />
+    </div>
+    <div>
+      <h4>背景模糊（点击封面图）</h4>
+      <NormalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="filter"
+        themeType="dark"
+      />
+    </div>
+    <div>
+      <h4>背景渐变（点击封面图）</h4>
+      <NormalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="linearGradient"
+        themeType="dark"
+      />
+    </div>
   </div>
 );
 ```

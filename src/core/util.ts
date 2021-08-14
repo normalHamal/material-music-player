@@ -1,3 +1,4 @@
+import ColorThief from 'colorthief';
 import { IMusic } from './common';
 
 interface IMediaSessionParams {
@@ -80,6 +81,39 @@ export const setMediaSession = (params: IMediaSessionParams) => {
   }
 };
 
+export const getImagePrimaryColor = (selector: string | HTMLImageElement) => {
+  const colorThief = new ColorThief();
+  let img: HTMLImageElement;
+
+  if (typeof selector === 'string') {
+    if (checkIfUrl(selector)) {
+      img = new Image();
+      img.setAttribute('crossorigin', 'anonymous');
+      img.src = selector;
+    } else {
+      img = document.querySelector(selector) as HTMLImageElement;
+    }
+  } else {
+    img = selector;
+  }
+
+  if (!img)
+    return Promise.reject(
+      new Error('selector must return an real HTMLImageElement'),
+    );
+
+  return new Promise<number[]>((resolve, reject) => {
+    if (img.complete) {
+      return resolve(colorThief.getColor(img));
+    }
+
+    img.addEventListener('load', function () {
+      resolve(colorThief.getColor(img));
+    });
+    img.addEventListener('error', reject);
+  });
+};
+
 export default {
   checkIfUrl,
   leftPad,
@@ -90,4 +124,5 @@ export default {
   UNDEF,
   isNullOrUndefined,
   setMediaSession,
+  getImagePrimaryColor,
 };

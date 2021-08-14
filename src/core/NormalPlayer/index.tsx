@@ -14,6 +14,7 @@ import { TransitionProps } from '@material-ui/core/transitions';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 import { useBoolean, useMusicList } from '@/hooks';
+import { BackgroundStyle } from '@/hooks/useBackgroundStyle';
 import {
   MusicDetail,
   PlayList,
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cover: {
       width: 151,
       height: 151,
-      margin: '8px auto',
+      margin: `${theme.spacing(1)}px auto`,
       borderRadius: '50%',
     },
     rotateRight: {
@@ -79,7 +80,8 @@ const Transition = React.forwardRef(function Transition(
 const NormalPlayer = (props: NormalProps) => {
   const classes = useStyles();
   const musicListIns = useMusicList();
-  const { className, list, onShare, themeOptions, themeType } = props;
+  const { className, list, onShare, themeOptions, themeType, backgroundStyle } =
+    props;
   const { current, replacePlayList } = musicListIns;
   const {
     state: detailVisible,
@@ -178,6 +180,7 @@ const NormalPlayer = (props: NormalProps) => {
             isShowCloseBtn={true}
             isShowListBtn={true}
             isShowPlayModeBtn={true}
+            backgroundStyle={backgroundStyle}
             source={current}
             onShare={onShare}
             playMode={musicListIns.playMode}
@@ -205,6 +208,7 @@ interface NormalProps {
   onShare?(song: ISong): void;
   themeOptions?: ThemeOptions;
   themeType?: ThemeType;
+  backgroundStyle?: BackgroundStyle;
 }
 
 export default NormalPlayer;

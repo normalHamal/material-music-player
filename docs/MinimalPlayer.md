@@ -61,15 +61,44 @@ const getLyrics = (url?: string): Promise<string> => {
 };
 
 export default () => (
-  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
-    <h2>普通用法</h2>
-    <MinimalPlayer
-      list={list.map((item) => ({
-        ...item,
-        lyrics: () => getLyrics(item.lyrics),
-      }))}
-      onShare={() => alert('点击分享')}
-    />
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+    }}
+  >
+    <div>
+      <h2>普通用法</h2>
+      <MinimalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+      />
+    </div>
+    <div>
+      <h2>背景模糊</h2>
+      <MinimalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="filter"
+      />
+    </div>
+    <div>
+      <h2>背景渐变</h2>
+      <MinimalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="linearGradient"
+      />
+    </div>
   </div>
 );
 ```
@@ -129,16 +158,47 @@ const getLyrics = (url?: string): Promise<string> => {
 };
 
 export default () => (
-  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
-    <h2>暗黑模式</h2>
-    <MinimalPlayer
-      list={list.map((item) => ({
-        ...item,
-        lyrics: () => getLyrics(item.lyrics),
-      }))}
-      onShare={() => alert('点击分享')}
-      themeType="dark"
-    />
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+    }}
+  >
+    <div>
+      <h2>暗黑模式</h2>
+      <MinimalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        themeType="dark"
+      />
+    </div>
+    <div>
+      <h2>背景模糊</h2>
+      <MinimalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="filter"
+        themeType="dark"
+      />
+    </div>
+    <div>
+      <h2>背景渐变</h2>
+      <MinimalPlayer
+        list={list.map((item) => ({
+          ...item,
+          lyrics: () => getLyrics(item.lyrics),
+        }))}
+        onShare={() => alert('点击分享')}
+        backgroundStyle="linearGradient"
+        themeType="dark"
+      />
+    </div>
   </div>
 );
 ```

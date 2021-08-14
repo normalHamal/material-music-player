@@ -27,12 +27,18 @@ import RepeatOneIcon from '@material-ui/icons/RepeatOne';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 import ShareIcon from '@material-ui/icons/Share';
 
-import { useBoolean, useResponsive, useCurrentLyric } from '@/hooks';
+import {
+  useBoolean,
+  useResponsive,
+  useCurrentLyric,
+  useBackgroundStyle,
+} from '@/hooks';
 import ProcessBar from './ProcessBar';
 import { noop } from '../util';
 import { IMusic, ISong, PlayMode } from '../common';
 import { PlayModeHN } from '../constants';
 import PlayWrapImg from './PlayWrapPng';
+import { BackgroundStyle } from '@/hooks/useBackgroundStyle';
 
 const MAX_WIDTH_PC_MODE = 884;
 
@@ -49,22 +55,13 @@ const useStyles = makeStyles((theme: Theme) => {
         boxSizing: 'inherit',
       },
     },
-    backup: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      zIndex: 1,
-      transition: 'all .3s',
-    },
     main: {
       position: 'absolute',
       top: 0,
       left: 0,
       width: '100%',
       height: '100%',
-      zIndex: 2,
+      zIndex: 3,
       display: 'flex',
       flexDirection: 'column',
       padding: theme.spacing(2),
@@ -116,8 +113,8 @@ const useStyles = makeStyles((theme: Theme) => {
       marginRight: theme.spacing(4),
       [theme.breakpoints.down('xs')]: {
         marginRight: 0,
-        width: 250,
-        height: 250,
+        width: 245,
+        height: 245,
         backgroundSize: '160px 160px',
       },
     },
@@ -130,8 +127,8 @@ const useStyles = makeStyles((theme: Theme) => {
       backgroundImage: `url(${PlayWrapImg})`,
       backgroundSize: 'contain',
       [theme.breakpoints.down('xs')]: {
-        width: 250,
-        height: 250,
+        width: 245,
+        height: 245,
       },
     },
     rotateRight: {
@@ -193,7 +190,12 @@ const Detail = (props: IDetailProps) => {
     playMode = PlayMode.REORDER,
     source = {} as IMusic,
     isPlaying,
+    backgroundStyle = 'default',
   } = props;
+  const { bgStyle, shadeTop, shadeBottom } = useBackgroundStyle({
+    backgroundStyle: backgroundStyle,
+    backgroundImage: source.picurl,
+  });
   const lyricWrapRef = useRef<HTMLDivElement>(null);
   const [volume, setVolume] = useState(Howler.volume());
   const { currentLyricIndex } = useCurrentLyric({
@@ -255,7 +257,9 @@ const Detail = (props: IDetailProps) => {
       className={classes.root}
       style={isMobile ? { height: visualHeight } : {}}
     >
-      <div className={classes.backup} />
+      <div style={bgStyle} />
+      <div style={shadeTop} />
+      <div style={shadeBottom} />
       <div className={classes.main}>
         <div className={classes.topbar}>
           {isShowCloseBtn ? (
@@ -451,6 +455,7 @@ interface IDetailProps {
   playMode?: PlayMode;
   isPlaying: boolean;
   source?: IMusic;
+  backgroundStyle?: BackgroundStyle;
   onClose?(): void;
   onShowList?(): void;
   onShare?(song: ISong): void;
