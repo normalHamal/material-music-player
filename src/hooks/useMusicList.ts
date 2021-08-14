@@ -1,9 +1,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Howl, Howler } from 'howler';
-import Lyric from '@/libs/lyric';
+import Lyric from '../libs/lyric';
 
-import { UNDEF, genRandomNumber, noop, setMediaSession } from '@/core/util';
-import { IMusic, IMusicListContext, ISong, PlayMode } from '@/core/common';
+import { UNDEF, genRandomNumber, noop, setMediaSession } from '../core/util';
+import { IMusic, IMusicListContext, ISong, PlayMode } from '../core/common';
 import useBoolean from './useBoolean';
 import useUpdateEffect from './useUpdateEffect';
 

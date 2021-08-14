@@ -1,17 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  withStyles,
-  Slider,
-  Typography,
-} from '@material-ui/core';
+import { Theme, Slider, Typography } from '@material-ui/core';
+import { makeStyles, createStyles, withStyles } from '@material-ui/core/styles';
 
 import { IMusic } from '../common';
 import { ms2HS } from '../util';
-import { useCurrentTime } from '@/hooks';
+import { useCurrentTime } from '../../hooks';
 
 const Bar = withStyles((theme: Theme) => ({
   marked: {

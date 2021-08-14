@@ -3,11 +3,9 @@ import clsx from 'clsx';
 import {
   IconButton as MuiIconButton,
   Theme,
-  createStyles,
-  makeStyles,
   useTheme,
-  withStyles,
 } from '@material-ui/core';
+import { makeStyles, createStyles, withStyles } from '@material-ui/core/styles';
 
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';

@@ -9,19 +9,18 @@ import {
   Typography,
   Dialog,
   Theme,
-  createStyles,
-  makeStyles,
 } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { TransitionProps } from '@material-ui/core/transitions';
 
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 
-import { useBoolean, useMusicList } from '@/hooks';
-import { MusicDetail, PlayList, ThemeContainer } from '@/core/Internal';
+import { useBoolean, useMusicList } from '../../hooks';
+import { MusicDetail, PlayList, ThemeContainer } from '../../core/Internal';
 import { ISong } from '../common';
 import { ThemeOptions, ThemeType } from '../Internal/ThemeContainer';
-import { BackgroundStyle } from '@/hooks/useBackgroundStyle';
+import { BackgroundStyle } from '../../hooks/useBackgroundStyle';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Howl } from 'howler';
-import Lyric from '@/libs/lyric';
+import Lyric from '../libs/lyric';
 import useCurrentTime from './useCurrentTime';
 
 const NO_LYRICS = '暂无歌词';

@@ -1,8 +1,6 @@
 import React, { useRef, useCallback } from 'react';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import {
-  createStyles,
-  makeStyles,
   Theme,
   Typography,
   Drawer,
@@ -13,8 +11,8 @@ import {
   ListItemAvatar,
   ListItemSecondaryAction,
   ListItemText,
-  withStyles,
 } from '@material-ui/core';
+import { makeStyles, createStyles, withStyles } from '@material-ui/core/styles';
 
 import DeleteIcon from '@material-ui/icons/Delete';
 import PauseIcon from '@material-ui/icons/Pause';

@@ -1,5 +1,5 @@
 import { Howl } from 'howler';
-import Lyric from '@/libs/lyric';
+import Lyric from '../libs/lyric';
 
 export enum PlayMode {
   REORDER,

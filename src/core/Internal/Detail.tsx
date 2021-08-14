@@ -3,16 +3,15 @@ import { Howler } from 'howler';
 import clsx from 'clsx';
 import {
   CardMedia,
-  createStyles,
   Grid,
   IconButton,
-  makeStyles,
   Slider,
   Theme,
   Typography,
   useMediaQuery,
   useTheme,
 } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 import ExpandLess from '@material-ui/icons/ExpandMore';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
@@ -32,13 +31,13 @@ import {
   useResponsive,
   useCurrentLyric,
   useBackgroundStyle,
-} from '@/hooks';
+} from '../../hooks';
 import ProcessBar from './ProcessBar';
 import { noop } from '../util';
 import { IMusic, ISong, PlayMode } from '../common';
 import { PlayModeHN } from '../constants';
 import PlayWrapImg from './PlayWrapPng';
-import { BackgroundStyle } from '@/hooks/useBackgroundStyle';
+import { BackgroundStyle } from '../../hooks/useBackgroundStyle';
 
 const MAX_WIDTH_PC_MODE = 884;
 

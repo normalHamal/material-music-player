@@ -1,6 +1,6 @@
-import { getImagePrimaryColor } from '@/core/util';
 import { useTheme } from '@material-ui/core';
 import { useState, useEffect } from 'react';
+import { getImagePrimaryColor } from '../core/util';
 
 export type BackgroundStyle = 'default' | 'filter' | 'linearGradient';
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import clsx from 'clsx';
-import { Theme, createStyles, makeStyles } from '@material-ui/core';
 import {
   Card,
   CardActionArea,
@@ -9,19 +8,21 @@ import {
   Dialog,
   Slide,
   Typography,
+  Theme,
 } from '@material-ui/core';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { TransitionProps } from '@material-ui/core/transitions';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
-import { useBoolean, useMusicList } from '@/hooks';
-import { BackgroundStyle } from '@/hooks/useBackgroundStyle';
+import { useBoolean, useMusicList } from '../..//hooks';
+import { BackgroundStyle } from '../../hooks/useBackgroundStyle';
 import {
   MusicDetail,
   PlayList,
   ProcessBar,
   Controls,
   ThemeContainer,
-} from '@/core/Internal';
+} from '../../core/Internal';
 import { ISong } from '../common';
 import { ThemeOptions, ThemeType } from '../Internal/ThemeContainer';
 
